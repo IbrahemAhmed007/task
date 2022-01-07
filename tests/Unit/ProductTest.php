@@ -19,4 +19,9 @@ class ProductTest extends TestCase
         Product::factory()->create();
         $this->assertDatabaseCount('products', 1);
     }
+    public function test_create_products_to_the_same_category()
+    {
+        Product::factory()->forCategory()->count(5)->create();
+        $this->assertDatabaseCount('products', 5);
+    }
 }
