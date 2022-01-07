@@ -15,13 +15,13 @@ class CategoryTest extends TestCase
      *
      * @return void
      */
-    public function test_basic_category_factory()
+    public function testBasicCategoryFactory()
     {
         Category::factory()->create();
         $this->assertDatabaseCount('categories', 1);
     }
 
-    public function test_create_category_with_multiple_product()
+    public function testCreateCategoryWithMultipleProduct()
     {
         Category::factory()->hasProducts(5)->create();
         $this->assertDatabaseCount('categories', 1);

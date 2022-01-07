@@ -14,14 +14,16 @@ class ProductTest extends TestCase
      *
      * @return void
      */
-    public function test_basic_product_factory()
+    public function testBasicProductFactory()
     {
         Product::factory()->create();
         $this->assertDatabaseCount('products', 1);
     }
-    public function test_create_products_to_the_same_category()
+    public function testCreateProductsToTheSameCategory()
     {
         Product::factory()->forCategory()->count(5)->create();
         $this->assertDatabaseCount('products', 5);
     }
+
+
 }
