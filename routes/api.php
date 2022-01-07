@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\ProductsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
+Route::prefix('/')->namespace('App\Http\Controllers\Api')
+    ->group(function () {
 
+        Route::prefix('products/')
+            ->group(function () {
+                Route::name('api.products.list')->get('/', [ProductsController::class, 'list']);
+            });
+
+    });
