@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\File;
 
 class CategoryFactory extends Factory
 {
@@ -13,9 +14,13 @@ class CategoryFactory extends Factory
      */
     public function definition()
     {
+        $path = 'uploads/categories';
+        if (!File::exists($path)) {
+            File::makeDirectory($path, 0777);
+        }
         return [
             'name' => $this->faker->name,
-            'image' => $this->faker->image('uploads/categories'),
+            'image' => $this->faker->image($path),
         ];
     }
 }
