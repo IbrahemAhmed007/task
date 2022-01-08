@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Front\Products\FilterProduct;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::name('front.products.list')->get('/', function (){
-    return view('index');
-});
+Route::name('front.products.filter')->get('/', FilterProduct::class);
