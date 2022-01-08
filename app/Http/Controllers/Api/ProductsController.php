@@ -15,4 +15,9 @@ class ProductsController extends Controller
         $products = Product::select(['id', 'name', 'image', 'price', 'old_price', 'description', 'qty'])->get();
         return response()->json(['products' => ProductResource::collection($products)]);
     }
+
+    public function show(int $productId)
+    {
+        return response()->json(['product' => new ProductResource(Product::findOrFail($productId))]);
+    }
 }

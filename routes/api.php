@@ -20,6 +20,7 @@ Route::prefix('/')->namespace('App\Http\Controllers\Api')
         Route::prefix('products/')
             ->group(function () {
                 Route::name('api.products.list')->get('/', [ProductsController::class, 'list']);
+                Route::name('api.products.show')->get('show/{productId}', [ProductsController::class, 'show']);
             });
 
     });

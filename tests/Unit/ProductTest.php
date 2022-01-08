@@ -36,17 +36,27 @@ class ProductTest extends TestCase
 
     public function testHitProductsAPIReturnsProductsJson()
     {
-        $this->withoutExceptionHandling();
         $product = Product::factory()->create();
         $response = $this->getJson('/api/products');
         $response->assertJson([
             'products' => [
                 [
-                    "id"=>$product->id
+                    "id" => $product->id
                 ]
             ]
         ]);
+    }
 
+    public function testHitShowProductAPI()
+    {
+        $product = Product::factory()->create();
+        $response = $this->getJson('/api/products/show/' . $product->id);
+        $response->assertJson([
+            'product' =>
+                [
+                    "id" => $product->id
+                ]
+        ]);
     }
 
 }
