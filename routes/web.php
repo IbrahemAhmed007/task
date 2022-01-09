@@ -14,4 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::name('front.products.filter')->get('/', FilterProduct::class);
+Route::name('front.products.filter')->get('/', function () {
+    return view('front.products.filter');
+});

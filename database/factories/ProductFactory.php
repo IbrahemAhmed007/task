@@ -16,7 +16,7 @@ class ProductFactory extends Factory
      */
     public function definition(): array
     {
-        $path = 'uploads/products';
+        $path = public_path('uploads/products');
         if (!File::exists($path)) {
             File::makeDirectory($path, 0777, true, true);
         }

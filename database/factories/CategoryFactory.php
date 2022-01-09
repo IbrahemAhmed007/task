@@ -14,7 +14,7 @@ class CategoryFactory extends Factory
      */
     public function definition()
     {
-        $path = 'uploads/categories';
+        $path = public_path('uploads/categories');
         if (!File::exists($path)) {
             File::makeDirectory($path, 0777);
         }

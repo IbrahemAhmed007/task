@@ -35,6 +35,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereQty($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|Product filterByCategoryIds($categoryId)
  */
 class Product extends Model
 {
@@ -43,5 +44,13 @@ class Product extends Model
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function scopeFilterByCategoryIds($query, $categoryIds)
+    {
+        $query->where(function ($query) use ($categoryIds) {
+            if (sizeof((array)$categoryIds))
+                $query->whereIn('category_id', $categoryIds);
+        });
     }
 }
