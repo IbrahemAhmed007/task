@@ -25,7 +25,7 @@ class ProductFactory extends Factory
             'name' => $this->faker->name,
             'old_price' => $price,
             'price' => $price - $this->faker->numberBetween(0, $price),
-            'image' => $this->faker->image($path),
+            'image' => 'uploads/products/'.$this->faker->image($path,200,200,null,false),
             'description' => $this->faker->text(),
             'qty' => $this->faker->numberBetween(0, 20),
             'category_id' => Category::factory(),
